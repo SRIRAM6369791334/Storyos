@@ -28,14 +28,17 @@ Phase 1 — Core Architecture
 - [x] Task 1.1 — Data Architecture (`docs/architecture/data_architecture.md`) — APPROVED
 - [x] Task 1.2 — Entity Architecture (`docs/architecture/entity_architecture.md`) — APPROVED
 - [x] Task 1.3 — Metadata Architecture (`docs/architecture/metadata_architecture.md`) — APPROVED
-- [x] Task 1.4 — Relationship Architecture (`docs/architecture/relationship_architecture.md`) — Pending CTO Review
+- [x] Task 1.4 — Relationship Architecture (`docs/architecture/relationship_architecture.md`) — APPROVED
+- [x] Task 1.5 — Knowledge Graph Architecture (`docs/architecture/knowledge_graph_architecture.md`) — APPROVED
+- [x] Task 1.6 — Storage Architecture (`docs/architecture/storage_architecture.md`) — APPROVED
+- [x] Task 1.7 — Versioning Architecture (`docs/architecture/versioning_architecture.md`) — Pending CTO Review
 
 ## Active Task
-Task 1.4 — Relationship Architecture submitted for CTO review
+Task 1.7 — Versioning Architecture submitted for CTO review
 
 ## Next Task
-Task 1.5 — Knowledge Graph Architecture
-`docs/architecture/knowledge_graph_architecture.md`
+Task 1.8 — Search Architecture
+`docs/architecture/search_architecture.md`
 
 ## Workflow
 ChatGPT → Architecture + Prompt → Antigravity AI → Implementation → CTO Review → Next Task
@@ -70,10 +73,10 @@ Phase 1 — Core Architecture ⏳ ACTIVE
 ├── Task 1.1 Data Architecture ✅
 ├── Task 1.2 Entity Architecture ✅
 ├── Task 1.3 Metadata Architecture ✅
-├── Task 1.4 Relationship Architecture ✅ (pending review)
-├── Task 1.5 Knowledge Graph Architecture ⏳
-├── Task 1.6 Storage Architecture ⏳
-├── Task 1.7 Versioning Architecture ⏳
+├── Task 1.4 Relationship Architecture ✅
+├── Task 1.5 Knowledge Graph Architecture ✅
+├── Task 1.6 Storage Architecture ✅
+├── Task 1.7 Versioning Architecture ✅ (pending review)
 └── Task 1.8 Search Architecture ⏳
 
 ## Domain Model Summary (from domain_model.md)
