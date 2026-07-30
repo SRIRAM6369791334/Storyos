@@ -1,0 +1,16 @@
+{
+  "name": "@storyos/infrastructure-redis",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "dependencies": {
+    "ioredis": "5.4.1"
+  },
+  "devDependencies": {
+    "@types/ioredis": "5.0.0"
+  },
+  "nx": {
+    "tags": ["type:infrastructure"]
+  }
+}

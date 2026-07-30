@@ -1,0 +1,13 @@
+{
+  "name": "@storyos/infrastructure-kafka",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "dependencies": {
+    "kafkajs": "2.2.4"
+  },
+  "nx": {
+    "tags": ["type:infrastructure"]
+  }
+}

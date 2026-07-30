@@ -1,0 +1,41 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx", "@typescript-eslint"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "type:domain",
+                "onlyDependOnLibsWithTags": ["type:domain"]
+              },
+              {
+                "sourceTag": "type:application",
+                "onlyDependOnLibsWithTags": ["type:domain", "type:application"]
+              },
+              {
+                "sourceTag": "type:infrastructure",
+                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure"]
+              },
+              {
+                "sourceTag": "type:ai-engine",
+                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure", "type:ai-engine"]
+              },
+              {
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure", "type:ai-engine", "type:sdk"]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

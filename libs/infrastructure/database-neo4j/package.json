@@ -1,0 +1,13 @@
+{
+  "name": "@storyos/infrastructure-neo4j",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "dependencies": {
+    "neo4j-driver": "5.21.0"
+  },
+  "nx": {
+    "tags": ["type:infrastructure"]
+  }
+}
