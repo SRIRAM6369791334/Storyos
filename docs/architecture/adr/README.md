@@ -14,6 +14,7 @@ ADRs document significant architectural decisions — what was decided, why, wha
 | [ADR-0004](ADR-0004.md) | Canon Modification Requires Explicit Human Confirmation | Accepted | 2026-07-29 |
 | [ADR-0005](ADR-0005.md) | Event-Driven Inter-Module Communication | Accepted | 2026-07-29 |
 | [ADR-0006](ADR-0006.md) | Story Universe as Hard Data Isolation Boundary | Accepted | 2026-07-29 |
+| [ADR-0007](ADR-0007-knowledge-graph-technology-decision.md) | Knowledge Graph Technology Decision (Neo4j Enterprise / Postgres+AGE) | Accepted | 2026-07-30 |
 
 ## How to Add a New ADR
 

@@ -36,10 +36,10 @@ Phase 1 — Core Architecture
 - [x] Task 1.8 — Search Architecture (`docs/architecture/search_architecture.md`) — APPROVED
 
 ## Active Task
-✅ ALL ROADMAP TASKS COMPLETE — StoryOS Enterprise Architecture v1.0 (Phases 0-11) FINISHED
+✅ ALL PRE-IMPLEMENTATION ARCHITECTURE & ENGINEERING FOUNDATIONS COMPLETE — SPRINT 0 IMPLEMENTATION READY
 
 ## Next Task
-NONE — StoryOS Architecture Constitution Complete & Fully Certified
+Sprint 0 Software Implementation Kickoff (`apps/`, `libs/`, `infra/`)
 
 ## Workflow
 ChatGPT → Architecture + Prompt → Antigravity AI → Implementation → CTO Review → Next Task
@@ -167,6 +167,11 @@ Phase 11 — Enterprise Platform Extensions & Infrastructure ✅ CLOSED
 ├── Task 11.4 Secrets & Cryptographic Key Management Architecture ✅ APPROVED
 ├── Task 11.5 Enterprise Notification & Communications Architecture ✅ APPROVED
 └── Task 11.6 Enterprise Search Federation Architecture ✅ APPROVED
+
+Phase 12 — Engineering Foundation & Implementation Readiness ✅ CLOSED
+├── Task 12.1 ADR-0007 Knowledge Graph Technology Decision ✅ APPROVED
+├── Task 12.2 Engineering Test Strategy ✅ APPROVED
+└── Task 12.3 Repository Blueprint ✅ APPROVED
 
 ## Domain Model Summary (from domain_model.md)
 - Core Domains: 9 (Story Universe, Character, World Building, Timeline, Relationship, Knowledge Graph, Narrative, Item, Canon Management)
