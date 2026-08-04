@@ -1,0 +1,22 @@
+{
+  "name": "@storyos/worker-service",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@storyos/infrastructure-kafka": "workspace:*",
+    "dotenv": "16.4.5"
+  },
+  "devDependencies": {
+    "kafkajs": "2.2.4",
+    "tsx": "4.16.2"
+  },
+  "nx": {
+    "tags": ["type:app"]
+  }
+}
