@@ -176,6 +176,19 @@ export class Character {
 
 export interface CharacterRepository {
   findById(characterId: CharacterId): Promise<Character | null>;
+  findByUniverseId(universeId: UniverseId): Promise<Character[]>;
   save(character: Character): Promise<void>;
   delete(characterId: CharacterId): Promise<void>;
+}
+
+export type ICharacterRepository = CharacterRepository;
+
+export interface CharacterCreatedEvent {
+  eventId: string;
+  eventType: "CharacterCreated";
+  characterId: string;
+  universeId: string;
+  primaryName: string;
+  createdBy: string;
+  createdAt: string;
 }

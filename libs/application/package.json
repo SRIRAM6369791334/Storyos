@@ -5,7 +5,8 @@
   "types": "index.ts",
   "private": true,
   "dependencies": {
-    "@storyos/domain-universe": "workspace:*"
+    "@storyos/domain-universe": "workspace:*",
+    "@storyos/domain-character": "workspace:*"
   },
   "nx": {
     "tags": ["type:application"]

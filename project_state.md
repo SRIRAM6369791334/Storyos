@@ -2,8 +2,9 @@
 
 ## Architecture Version
 
-**v1.0** — Phase 1 begins (Foundation complete + Data Architecture defined)
+**v1.2** — Phase 1 begins (Foundation complete + Data Architecture defined)
 
+> History: v1.2 (2026-08-04) — Sprint 2 (Character Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.1 (2026-08-04) — Sprint 1 (Story Universe Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.0 (2026-07-29) — Phase 5 Task 5.4 Webhooks & Event Integration approved; Phase 5 continues
 > History: v1.0 (2026-07-29) — Phase 0 closed; coding_principles.md + data_architecture.md created
@@ -15,7 +16,7 @@
 ---
 
 ## Current Phase
-Phase 13 — Software Implementation (Sprint 1 Complete, Sprint 2 Awaiting Approval)
+Phase 13 — Software Implementation (Sprint 2 Complete)
 
 ## Completed Tasks
 ### Phase 0 — Foundation (CLOSED ✅)
@@ -39,12 +40,13 @@ Phase 13 — Software Implementation (Sprint 1 Complete, Sprint 2 Awaiting Appro
 ### Software Implementation Sprints
 - [x] **Sprint 0** — Monorepo Infrastructure & Health Checks — CLOSED ✅
 - [x] **Sprint 1** — First Domain Vertical Slice (Story Universe Domain + CQRS + Real Postgres/Kafka Integration Test) — CLOSED ✅
+- [x] **Sprint 2** — Character Domain Vertical Slice (libs/domain/character, Postgres persistence with FK, Kafka events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
 
 ## Active Task
-✅ SPRINT 1 COMPLETE (Story Universe Vertical Slice + Unit Tests + Real Postgres & Kafka Integration Verification Passed)
+✅ SPRINT 2 COMPLETE (Character Vertical Slice + Unit Tests + Real Postgres & Kafka Integration Verification Passed)
 
 ## Next Task
-Sprint 2 Domain Bounded Context Implementation (Character Domain Slice)
+Sprint 3 Domain Bounded Context Implementation (World Building Domain: Location & Faction Slice)
 
 ## Workflow
 ChatGPT → Architecture + Prompt → Antigravity AI → Implementation → CTO Review → Next Task
