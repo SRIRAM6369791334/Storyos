@@ -7,9 +7,9 @@
   "scripts": {
     "dev": "nx run-many --target=serve --all --parallel",
     "build": "nx run-many --target=build --all --parallel",
-    "test": "vitest run",
-    "test:unit": "vitest run --selectProjects unit",
-    "test:integration": "vitest run --selectProjects integration",
+    "test": "vitest run --project unit",
+    "test:unit": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
     "test:coverage": "vitest run --coverage",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
