@@ -78,6 +78,12 @@ importers:
 
   apps/api-gateway:
     dependencies:
+      '@storyos/application':
+        specifier: workspace:*
+        version: link:../../libs/application
+      '@storyos/domain-universe':
+        specifier: workspace:*
+        version: link:../../libs/domain/universe
       '@storyos/infrastructure-kafka':
         specifier: workspace:*
         version: link:../../libs/infrastructure/messaging-kafka
@@ -123,6 +129,12 @@ importers:
         specifier: 4.16.2
         version: 4.16.2
 
+  libs/application:
+    dependencies:
+      '@storyos/domain-universe':
+        specifier: workspace:*
+        version: link:../domain/universe
+
   libs/domain/character: {}
 
   libs/domain/universe: {}
@@ -151,6 +163,9 @@ importers:
 
   libs/infrastructure/database-postgres:
     dependencies:
+      '@storyos/domain-universe':
+        specifier: workspace:*
+        version: link:../../domain/universe
       pg:
         specifier: 8.12.0
         version: 8.12.0
@@ -161,6 +176,9 @@ importers:
 
   libs/infrastructure/messaging-kafka:
     dependencies:
+      '@storyos/domain-universe':
+        specifier: workspace:*
+        version: link:../../domain/universe
       kafkajs:
         specifier: 2.2.4
         version: 2.2.4

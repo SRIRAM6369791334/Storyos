@@ -1,49 +1,57 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createApp } from '../app.js';
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { createApp } from "../app.js";
 
 // Mock infrastructure health checks for unit testing
-vi.mock('@storyos/infrastructure-postgres', () => ({
+vi.mock("@storyos/infrastructure-postgres", () => ({
   PostgresClient: vi.fn().mockImplementation(() => ({
-    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy', latencyMs: 5 }),
+    checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 5 }),
     close: vi.fn().mockResolvedValue(undefined),
+  })),
+  PostgresUniverseRepository: vi.fn().mockImplementation(() => ({
+    save: vi.fn().mockResolvedValue(undefined),
+    findById: vi.fn().mockResolvedValue(null),
+    delete: vi.fn().mockResolvedValue(undefined),
   })),
 }));
 
-vi.mock('@storyos/infrastructure-neo4j', () => ({
+vi.mock("@storyos/infrastructure-neo4j", () => ({
   Neo4jClient: vi.fn().mockImplementation(() => ({
-    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy', latencyMs: 8 }),
+    checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 8 }),
     close: vi.fn().mockResolvedValue(undefined),
   })),
 }));
 
-vi.mock('@storyos/infrastructure-redis', () => ({
+vi.mock("@storyos/infrastructure-redis", () => ({
   RedisClient: vi.fn().mockImplementation(() => ({
-    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy', latencyMs: 2 }),
+    checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 2 }),
     close: vi.fn().mockResolvedValue(undefined),
   })),
 }));
 
-vi.mock('@storyos/infrastructure-milvus', () => ({
+vi.mock("@storyos/infrastructure-milvus", () => ({
   StoryOSMilvusClient: vi.fn().mockImplementation(() => ({
-    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy', latencyMs: 12 }),
+    checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 12 }),
     close: vi.fn().mockResolvedValue(undefined),
   })),
 }));
 
-vi.mock('@storyos/infrastructure-kafka', () => ({
+vi.mock("@storyos/infrastructure-kafka", () => ({
   KafkaClient: vi.fn().mockImplementation(() => ({
-    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy', latencyMs: 15 }),
+    checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 15 }),
     close: vi.fn().mockResolvedValue(undefined),
+  })),
+  KafkaEventPublisher: vi.fn().mockImplementation(() => ({
+    publish: vi.fn().mockResolvedValue(undefined),
   })),
 }));
 
-describe('API Gateway Health Checks (REL-001)', () => {
-  let app: any;
+describe("API Gateway Health Checks (REL-001)", () => {
+  let _app: any;
   let healthController: any;
 
   beforeEach(() => {
     const created = createApp();
-    app = created.app;
+    _app = created.app;
     healthController = created.healthController;
   });
 
@@ -51,7 +59,7 @@ describe('API Gateway Health Checks (REL-001)', () => {
     await healthController.close();
   });
 
-  it('GET /health returns 200 UP for shallow liveness probe', async () => {
+  it("GET /health returns 200 UP for shallow liveness probe", async () => {
     const req = {} as any;
     const res = {
       status: vi.fn().mockReturnThis(),
@@ -63,13 +71,13 @@ describe('API Gateway Health Checks (REL-001)', () => {
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(
       expect.objectContaining({
-        status: 'UP',
-        service: 'StoryOS API Gateway',
-      })
+        status: "UP",
+        service: "StoryOS API Gateway",
+      }),
     );
   });
 
-  it('GET /health/deep returns 200 UP when all 5 infrastructure components are healthy', async () => {
+  it("GET /health/deep returns 200 UP when all 5 infrastructure components are healthy", async () => {
     const req = {} as any;
     const res = {
       status: vi.fn().mockReturnThis(),
@@ -81,15 +89,15 @@ describe('API Gateway Health Checks (REL-001)', () => {
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(
       expect.objectContaining({
-        status: 'UP',
+        status: "UP",
         components: expect.objectContaining({
-          postgres: expect.objectContaining({ status: 'healthy' }),
-          neo4j: expect.objectContaining({ status: 'healthy' }),
-          redis: expect.objectContaining({ status: 'healthy' }),
-          milvus: expect.objectContaining({ status: 'healthy' }),
-          kafka: expect.objectContaining({ status: 'healthy' }),
+          postgres: expect.objectContaining({ status: "healthy" }),
+          neo4j: expect.objectContaining({ status: "healthy" }),
+          redis: expect.objectContaining({ status: "healthy" }),
+          milvus: expect.objectContaining({ status: "healthy" }),
+          kafka: expect.objectContaining({ status: "healthy" }),
         }),
-      })
+      }),
     );
   });
 });

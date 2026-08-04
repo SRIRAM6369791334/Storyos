@@ -1,0 +1,13 @@
+{
+  "name": "@storyos/application",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "dependencies": {
+    "@storyos/domain-universe": "workspace:*"
+  },
+  "nx": {
+    "tags": ["type:application"]
+  }
+}

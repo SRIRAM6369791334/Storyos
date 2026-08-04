@@ -22,15 +22,30 @@
               },
               {
                 "sourceTag": "type:infrastructure",
-                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure"]
+                "onlyDependOnLibsWithTags": [
+                  "type:domain",
+                  "type:application",
+                  "type:infrastructure"
+                ]
               },
               {
                 "sourceTag": "type:ai-engine",
-                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure", "type:ai-engine"]
+                "onlyDependOnLibsWithTags": [
+                  "type:domain",
+                  "type:application",
+                  "type:infrastructure",
+                  "type:ai-engine"
+                ]
               },
               {
                 "sourceTag": "type:app",
-                "onlyDependOnLibsWithTags": ["type:domain", "type:application", "type:infrastructure", "type:ai-engine", "type:sdk"]
+                "onlyDependOnLibsWithTags": [
+                  "type:domain",
+                  "type:application",
+                  "type:infrastructure",
+                  "type:ai-engine",
+                  "type:sdk"
+                ]
               }
             ]
           }

@@ -9,6 +9,8 @@
     "start": "node dist/main.js"
   },
   "dependencies": {
+    "@storyos/domain-universe": "workspace:*",
+    "@storyos/application": "workspace:*",
     "@storyos/infrastructure-postgres": "workspace:*",
     "@storyos/infrastructure-neo4j": "workspace:*",
     "@storyos/infrastructure-redis": "workspace:*",

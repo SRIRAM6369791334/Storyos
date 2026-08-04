@@ -1,4 +1,5 @@
-import { Kafka, Admin } from 'kafkajs';
+import type { IEventPublisher } from "@storyos/domain-universe";
+import { type Admin, Kafka } from "kafkajs";
 
 export interface KafkaConfig {
   clientId?: string;
@@ -10,8 +11,10 @@ export class KafkaClient {
   private admin: Admin;
 
   constructor(config?: KafkaConfig) {
-    const brokers = config?.brokers || (process.env.KAFKA_BROKERS ? process.env.KAFKA_BROKERS.split(',') : ['localhost:9092']);
-    const clientId = config?.clientId || process.env.KAFKA_CLIENT_ID || 'storyos-app';
+    const brokers =
+      config?.brokers ||
+      (process.env.KAFKA_BROKERS ? process.env.KAFKA_BROKERS.split(",") : ["localhost:9092"]);
+    const clientId = config?.clientId || process.env.KAFKA_CLIENT_ID || "storyos-app";
 
     this.kafka = new Kafka({
       clientId,
@@ -27,16 +30,20 @@ export class KafkaClient {
     return this.kafka;
   }
 
-  public async checkHealth(): Promise<{ status: 'healthy' | 'unhealthy'; latencyMs: number; error?: string }> {
+  public async checkHealth(): Promise<{
+    status: "healthy" | "unhealthy";
+    latencyMs: number;
+    error?: string;
+  }> {
     const start = Date.now();
     try {
       await this.admin.connect();
       await this.admin.listTopics();
       await this.admin.disconnect();
-      return { status: 'healthy', latencyMs: Date.now() - start };
+      return { status: "healthy", latencyMs: Date.now() - start };
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
-      return { status: 'unhealthy', latencyMs: Date.now() - start, error: errorMessage };
+      return { status: "unhealthy", latencyMs: Date.now() - start, error: errorMessage };
     }
   }
 
@@ -46,5 +53,23 @@ export class KafkaClient {
     } catch {
       // ignore if already disconnected
     }
+  }
+}
+
+export class KafkaEventPublisher implements IEventPublisher {
+  private kafkaClient: KafkaClient;
+
+  constructor(kafkaClient: KafkaClient) {
+    this.kafkaClient = kafkaClient;
+  }
+
+  public async publish(topic: string, event: Record<string, unknown>): Promise<void> {
+    const producer = this.kafkaClient.getKafka().producer();
+    await producer.connect();
+    await producer.send({
+      topic,
+      messages: [{ value: JSON.stringify(event) }],
+    });
+    await producer.disconnect();
   }
 }

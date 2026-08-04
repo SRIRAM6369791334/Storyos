@@ -1,4 +1,4 @@
-import Redis from 'ioredis';
+import Redis from "ioredis";
 
 export interface RedisConfig {
   host?: string;
@@ -11,7 +11,7 @@ export class RedisClient {
 
   constructor(config?: RedisConfig) {
     this.client = new Redis({
-      host: config?.host || process.env.REDIS_HOST || 'localhost',
+      host: config?.host || process.env.REDIS_HOST || "localhost",
       port: config?.port || Number(process.env.REDIS_PORT || 6379),
       password: config?.password || process.env.REDIS_PASSWORD || undefined,
       lazyConnect: true,
@@ -24,25 +24,33 @@ export class RedisClient {
     return this.client;
   }
 
-  public async checkHealth(): Promise<{ status: 'healthy' | 'unhealthy'; latencyMs: number; error?: string }> {
+  public async checkHealth(): Promise<{
+    status: "healthy" | "unhealthy";
+    latencyMs: number;
+    error?: string;
+  }> {
     const start = Date.now();
     try {
-      if (this.client.status !== 'ready' && this.client.status !== 'connecting') {
+      if (this.client.status !== "ready" && this.client.status !== "connecting") {
         await this.client.connect();
       }
       const response = await this.client.ping();
-      if (response === 'PONG') {
-        return { status: 'healthy', latencyMs: Date.now() - start };
+      if (response === "PONG") {
+        return { status: "healthy", latencyMs: Date.now() - start };
       }
-      return { status: 'unhealthy', latencyMs: Date.now() - start, error: 'Unexpected Redis PING response' };
+      return {
+        status: "unhealthy",
+        latencyMs: Date.now() - start,
+        error: "Unexpected Redis PING response",
+      };
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
-      return { status: 'unhealthy', latencyMs: Date.now() - start, error: errorMessage };
+      return { status: "unhealthy", latencyMs: Date.now() - start, error: errorMessage };
     }
   }
 
   public async close(): Promise<void> {
-    if (this.client.status === 'ready' || this.client.status === 'connecting') {
+    if (this.client.status === "ready" || this.client.status === "connecting") {
       await this.client.quit();
     }
   }

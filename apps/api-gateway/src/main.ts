@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import { createApp } from './app.js';
+import dotenv from "dotenv";
+import { createApp } from "./app.js";
 
 dotenv.config();
 
@@ -16,10 +16,10 @@ const gracefulShutdown = async (signal: string) => {
   console.log(`[StoryOS API Gateway] Received ${signal}, shutting down gracefully...`);
   server.close(async () => {
     await healthController.close();
-    console.log('[StoryOS API Gateway] Shutdown complete.');
+    console.log("[StoryOS API Gateway] Shutdown complete.");
     process.exit(0);
   });
 };
 
-process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));

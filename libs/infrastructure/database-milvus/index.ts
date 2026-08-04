@@ -1,4 +1,4 @@
-import { MilvusClient } from '@zilliz/milvus2-sdk-node';
+import { MilvusClient } from "@zilliz/milvus2-sdk-node";
 
 export interface MilvusConfig {
   address?: string;
@@ -10,7 +10,7 @@ export class StoryOSMilvusClient {
   private client: MilvusClient;
 
   constructor(config?: MilvusConfig) {
-    const address = config?.address || process.env.MILVUS_ADDRESS || 'localhost:19530';
+    const address = config?.address || process.env.MILVUS_ADDRESS || "localhost:19530";
     this.client = new MilvusClient({
       address,
       username: config?.username || process.env.MILVUS_USER,
@@ -22,17 +22,25 @@ export class StoryOSMilvusClient {
     return this.client;
   }
 
-  public async checkHealth(): Promise<{ status: 'healthy' | 'unhealthy'; latencyMs: number; error?: string }> {
+  public async checkHealth(): Promise<{
+    status: "healthy" | "unhealthy";
+    latencyMs: number;
+    error?: string;
+  }> {
     const start = Date.now();
     try {
       const res = await this.client.checkHealth();
       if (res.isHealthy) {
-        return { status: 'healthy', latencyMs: Date.now() - start };
+        return { status: "healthy", latencyMs: Date.now() - start };
       }
-      return { status: 'unhealthy', latencyMs: Date.now() - start, error: 'Milvus reported unhealthy state' };
+      return {
+        status: "unhealthy",
+        latencyMs: Date.now() - start,
+        error: "Milvus reported unhealthy state",
+      };
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
-      return { status: 'unhealthy', latencyMs: Date.now() - start, error: errorMessage };
+      return { status: "unhealthy", latencyMs: Date.now() - start, error: errorMessage };
     }
   }
 

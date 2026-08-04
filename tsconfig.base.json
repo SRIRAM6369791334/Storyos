@@ -25,8 +25,15 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
+      "@storyos/domain-universe": ["libs/domain/universe/index.ts"],
       "@storyos/domain/*": ["libs/domain/*"],
+      "@storyos/application": ["libs/application/index.ts"],
       "@storyos/application/*": ["libs/application/*"],
+      "@storyos/infrastructure-postgres": ["libs/infrastructure/database-postgres/index.ts"],
+      "@storyos/infrastructure-neo4j": ["libs/infrastructure/database-neo4j/index.ts"],
+      "@storyos/infrastructure-redis": ["libs/infrastructure/cache-redis/index.ts"],
+      "@storyos/infrastructure-milvus": ["libs/infrastructure/database-milvus/index.ts"],
+      "@storyos/infrastructure-kafka": ["libs/infrastructure/messaging-kafka/index.ts"],
       "@storyos/infrastructure/*": ["libs/infrastructure/*"],
       "@storyos/ai-engine/*": ["libs/ai-engine/*"],
       "@storyos/sdk/*": ["libs/sdk/*"]

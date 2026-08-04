@@ -5,6 +5,7 @@
   "types": "index.ts",
   "private": true,
   "dependencies": {
+    "@storyos/domain-universe": "workspace:*",
     "pg": "8.12.0"
   },
   "devDependencies": {

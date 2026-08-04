@@ -5,6 +5,7 @@
   "types": "index.ts",
   "private": true,
   "dependencies": {
+    "@storyos/domain-universe": "workspace:*",
     "kafkajs": "2.2.4"
   },
   "nx": {

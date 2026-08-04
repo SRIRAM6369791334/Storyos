@@ -287,3 +287,19 @@ export interface UniverseRepository {
   save(universe: StoryUniverse): Promise<void>;
   delete(universeId: UniverseId): Promise<void>;
 }
+
+export type IUniverseRepository = UniverseRepository;
+
+export interface UniverseCreatedEvent {
+  eventId: string;
+  eventType: "UniverseCreated";
+  universeId: string;
+  organizationId: string;
+  title: string;
+  createdBy: string;
+  createdAt: string;
+}
+
+export interface IEventPublisher {
+  publish(topic: string, event: Record<string, unknown>): Promise<void>;
+}

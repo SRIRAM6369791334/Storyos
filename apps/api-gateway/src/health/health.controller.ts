@@ -1,9 +1,9 @@
-import { Request, Response } from 'express';
-import { PostgresClient } from '@storyos/infrastructure-postgres';
-import { Neo4jClient } from '@storyos/infrastructure-neo4j';
-import { RedisClient } from '@storyos/infrastructure-redis';
-import { StoryOSMilvusClient } from '@storyos/infrastructure-milvus';
-import { KafkaClient } from '@storyos/infrastructure-kafka';
+import { KafkaClient } from "@storyos/infrastructure-kafka";
+import { StoryOSMilvusClient } from "@storyos/infrastructure-milvus";
+import { Neo4jClient } from "@storyos/infrastructure-neo4j";
+import { PostgresClient } from "@storyos/infrastructure-postgres";
+import { RedisClient } from "@storyos/infrastructure-redis";
+import type { Request, Response } from "express";
 
 export class HealthController {
   private postgresClient: PostgresClient;
@@ -23,8 +23,8 @@ export class HealthController {
   // Shallow Liveness Probe (/health) - REL-001
   public getLiveness = (_req: Request, res: Response): void => {
     res.status(200).json({
-      status: 'UP',
-      service: 'StoryOS API Gateway',
+      status: "UP",
+      service: "StoryOS API Gateway",
       timestamp: new Date().toISOString(),
     });
   };
@@ -42,16 +42,16 @@ export class HealthController {
     ]);
 
     const isHealthy =
-      postgres.status === 'healthy' &&
-      neo4j.status === 'healthy' &&
-      redis.status === 'healthy' &&
-      milvus.status === 'healthy' &&
-      kafka.status === 'healthy';
+      postgres.status === "healthy" &&
+      neo4j.status === "healthy" &&
+      redis.status === "healthy" &&
+      milvus.status === "healthy" &&
+      kafka.status === "healthy";
 
     const statusCode = isHealthy ? 200 : 503;
 
     res.status(statusCode).json({
-      status: isHealthy ? 'UP' : 'DOWN',
+      status: isHealthy ? "UP" : "DOWN",
       totalLatencyMs: Date.now() - startTime,
       timestamp: new Date().toISOString(),
       components: {
