@@ -25,3 +25,12 @@ export * from "./use-cases/list-relationships-by-character.query.js";
 export * from "./command-handlers/create-relationship.handler.js";
 export * from "./query-handlers/get-relationship.handler.js";
 export * from "./query-handlers/list-relationships-by-character.handler.js";
+
+export * from "./use-cases/create-event.command.js";
+export * from "./use-cases/get-event.query.js";
+export * from "./use-cases/list-events-by-universe.query.js";
+export * from "./use-cases/list-events-by-character.query.js";
+export * from "./command-handlers/create-event.handler.js";
+export * from "./query-handlers/get-event.handler.js";
+export * from "./query-handlers/list-events-by-universe.handler.js";
+export * from "./query-handlers/list-events-by-character.handler.js";

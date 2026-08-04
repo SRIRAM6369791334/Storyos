@@ -87,6 +87,9 @@ importers:
       '@storyos/domain-relationship':
         specifier: workspace:*
         version: link:../../libs/domain/relationship
+      '@storyos/domain-timeline':
+        specifier: workspace:*
+        version: link:../../libs/domain/timeline
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../../libs/domain/universe
@@ -149,6 +152,9 @@ importers:
       '@storyos/domain-relationship':
         specifier: workspace:*
         version: link:../domain/relationship
+      '@storyos/domain-timeline':
+        specifier: workspace:*
+        version: link:../domain/timeline
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../domain/universe
@@ -159,6 +165,8 @@ importers:
   libs/domain/character: {}
 
   libs/domain/relationship: {}
+
+  libs/domain/timeline: {}
 
   libs/domain/universe: {}
 
@@ -194,6 +202,9 @@ importers:
       '@storyos/domain-character':
         specifier: workspace:*
         version: link:../../domain/character
+      '@storyos/domain-timeline':
+        specifier: workspace:*
+        version: link:../../domain/timeline
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../../domain/universe

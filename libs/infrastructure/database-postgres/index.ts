@@ -56,3 +56,4 @@ export class PostgresClient {
 export { PostgresUniverseRepository } from "./src/universe.repository.js";
 export { PostgresCharacterRepository } from "./src/character.repository.js";
 export { PostgresLocationRepository } from "./src/location.repository.js";
+export { PostgresEventRepository } from "./src/event.repository.js";

@@ -15,6 +15,7 @@
     "@storyos/domain-character": "workspace:*",
     "@storyos/domain-world-building": "workspace:*",
     "@storyos/domain-relationship": "workspace:*",
+    "@storyos/domain-timeline": "workspace:*",
     "@storyos/infrastructure-kafka": "workspace:*",
     "@storyos/infrastructure-milvus": "workspace:*",
     "@storyos/infrastructure-neo4j": "workspace:*",

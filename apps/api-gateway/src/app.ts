@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import { CharacterController } from "./character/character.controller.js";
+import { EventController } from "./event/event.controller.js";
 import { HealthController } from "./health/health.controller.js";
 import { LocationController } from "./location/location.controller.js";
 import { RelationshipController } from "./relationship/relationship.controller.js";
@@ -12,6 +13,7 @@ export function createApp(): {
   characterController: CharacterController;
   locationController: LocationController;
   relationshipController: RelationshipController;
+  eventController: EventController;
 } {
   const app = express();
   const healthController = new HealthController();
@@ -19,6 +21,7 @@ export function createApp(): {
   const characterController = new CharacterController();
   const locationController = new LocationController();
   const relationshipController = new RelationshipController();
+  const eventController = new EventController();
 
   app.use(express.json());
 
@@ -49,6 +52,12 @@ export function createApp(): {
     relationshipController.listRelationshipsByCharacter,
   );
 
+  // Timeline Event Endpoints (Sprint 5 Vertical Slice)
+  app.post("/universes/:universeId/events", eventController.createEvent);
+  app.get("/events/:id", eventController.getEventById);
+  app.get("/universes/:universeId/events", eventController.listEventsByUniverse);
+  app.get("/characters/:characterId/events", eventController.listEventsByCharacter);
+
   return {
     app,
     healthController,
@@ -56,5 +65,6 @@ export function createApp(): {
     characterController,
     locationController,
     relationshipController,
+    eventController,
   };
 }

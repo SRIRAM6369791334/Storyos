@@ -8,6 +8,7 @@
     "@storyos/domain-universe": "workspace:*",
     "@storyos/domain-character": "workspace:*",
     "@storyos/domain-world-building": "workspace:*",
+    "@storyos/domain-timeline": "workspace:*",
     "pg": "8.12.0"
   },
   "devDependencies": {

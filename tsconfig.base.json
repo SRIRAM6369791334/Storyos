@@ -29,6 +29,7 @@
       "@storyos/domain-character": ["libs/domain/character/index.ts"],
       "@storyos/domain-world-building": ["libs/domain/world-building/index.ts"],
       "@storyos/domain-relationship": ["libs/domain/relationship/index.ts"],
+      "@storyos/domain-timeline": ["libs/domain/timeline/index.ts"],
       "@storyos/domain/*": ["libs/domain/*"],
       "@storyos/application": ["libs/application/index.ts"],
       "@storyos/application/*": ["libs/application/*"],
