@@ -1,6 +1,7 @@
 import express, { type Express } from "express";
 import { CharacterController } from "./character/character.controller.js";
 import { HealthController } from "./health/health.controller.js";
+import { LocationController } from "./location/location.controller.js";
 import { UniverseController } from "./universe/universe.controller.js";
 
 export function createApp(): {
@@ -8,11 +9,13 @@ export function createApp(): {
   healthController: HealthController;
   universeController: UniverseController;
   characterController: CharacterController;
+  locationController: LocationController;
 } {
   const app = express();
   const healthController = new HealthController();
   const universeController = new UniverseController();
   const characterController = new CharacterController();
+  const locationController = new LocationController();
 
   app.use(express.json());
 
@@ -29,5 +32,11 @@ export function createApp(): {
   app.get("/characters/:id", characterController.getCharacterById);
   app.get("/universes/:universeId/characters", characterController.listCharactersByUniverse);
 
-  return { app, healthController, universeController, characterController };
+  // World Building - Location Endpoints (Sprint 3 Vertical Slice)
+  app.post("/universes/:universeId/locations", locationController.createLocation);
+  app.get("/locations/:id", locationController.getLocationById);
+  app.get("/universes/:universeId/locations", locationController.listLocationsByUniverse);
+  app.get("/locations/:id/children", locationController.listChildLocations);
+
+  return { app, healthController, universeController, characterController, locationController };
 }

@@ -13,6 +13,7 @@
     "@storyos/application": "workspace:*",
     "@storyos/domain-universe": "workspace:*",
     "@storyos/domain-character": "workspace:*",
+    "@storyos/domain-world-building": "workspace:*",
     "@storyos/infrastructure-kafka": "workspace:*",
     "@storyos/infrastructure-milvus": "workspace:*",
     "@storyos/infrastructure-neo4j": "workspace:*",

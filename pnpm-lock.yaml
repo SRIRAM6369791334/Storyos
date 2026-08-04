@@ -87,6 +87,9 @@ importers:
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../../libs/domain/universe
+      '@storyos/domain-world-building':
+        specifier: workspace:*
+        version: link:../../libs/domain/world-building
       '@storyos/infrastructure-kafka':
         specifier: workspace:*
         version: link:../../libs/infrastructure/messaging-kafka
@@ -146,10 +149,15 @@ importers:
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../domain/universe
+      '@storyos/domain-world-building':
+        specifier: workspace:*
+        version: link:../domain/world-building
 
   libs/domain/character: {}
 
   libs/domain/universe: {}
+
+  libs/domain/world-building: {}
 
   libs/infrastructure/cache-redis:
     dependencies:
@@ -181,6 +189,9 @@ importers:
       '@storyos/domain-universe':
         specifier: workspace:*
         version: link:../../domain/universe
+      '@storyos/domain-world-building':
+        specifier: workspace:*
+        version: link:../../domain/world-building
       pg:
         specifier: 8.12.0
         version: 8.12.0

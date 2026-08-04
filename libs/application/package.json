@@ -6,7 +6,8 @@
   "private": true,
   "dependencies": {
     "@storyos/domain-universe": "workspace:*",
-    "@storyos/domain-character": "workspace:*"
+    "@storyos/domain-character": "workspace:*",
+    "@storyos/domain-world-building": "workspace:*"
   },
   "nx": {
     "tags": ["type:application"]

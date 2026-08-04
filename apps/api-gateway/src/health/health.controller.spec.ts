@@ -18,6 +18,13 @@ vi.mock("@storyos/infrastructure-postgres", () => ({
     findByUniverseId: vi.fn().mockResolvedValue([]),
     delete: vi.fn().mockResolvedValue(undefined),
   })),
+  PostgresLocationRepository: vi.fn().mockImplementation(() => ({
+    save: vi.fn().mockResolvedValue(undefined),
+    findById: vi.fn().mockResolvedValue(null),
+    findByUniverseId: vi.fn().mockResolvedValue([]),
+    findByParentId: vi.fn().mockResolvedValue([]),
+    delete: vi.fn().mockResolvedValue(undefined),
+  })),
 }));
 
 vi.mock("@storyos/infrastructure-neo4j", () => ({
