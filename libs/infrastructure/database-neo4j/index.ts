@@ -43,3 +43,5 @@ export class Neo4jClient {
     await this.driverInstance.close();
   }
 }
+
+export { Neo4jRelationshipRepository } from "./src/relationship.repository.js";

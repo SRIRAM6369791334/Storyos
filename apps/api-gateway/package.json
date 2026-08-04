@@ -14,12 +14,12 @@
     "@storyos/domain-universe": "workspace:*",
     "@storyos/domain-character": "workspace:*",
     "@storyos/domain-world-building": "workspace:*",
+    "@storyos/domain-relationship": "workspace:*",
     "@storyos/infrastructure-kafka": "workspace:*",
     "@storyos/infrastructure-milvus": "workspace:*",
     "@storyos/infrastructure-neo4j": "workspace:*",
     "@storyos/infrastructure-postgres": "workspace:*",
-    "@storyos/infrastructure-redis": "workspace:*",
-    "express": "4.19.2"
+    "@storyos/infrastructure-redis": "workspace:*"
   },
   "devDependencies": {
     "@types/express": "4.17.21",

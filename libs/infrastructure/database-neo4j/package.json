@@ -5,6 +5,7 @@
   "types": "index.ts",
   "private": true,
   "dependencies": {
+    "@storyos/domain-relationship": "workspace:*",
     "neo4j-driver": "5.21.0"
   },
   "nx": {

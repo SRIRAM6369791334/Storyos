@@ -2,6 +2,7 @@ import express, { type Express } from "express";
 import { CharacterController } from "./character/character.controller.js";
 import { HealthController } from "./health/health.controller.js";
 import { LocationController } from "./location/location.controller.js";
+import { RelationshipController } from "./relationship/relationship.controller.js";
 import { UniverseController } from "./universe/universe.controller.js";
 
 export function createApp(): {
@@ -10,12 +11,14 @@ export function createApp(): {
   universeController: UniverseController;
   characterController: CharacterController;
   locationController: LocationController;
+  relationshipController: RelationshipController;
 } {
   const app = express();
   const healthController = new HealthController();
   const universeController = new UniverseController();
   const characterController = new CharacterController();
   const locationController = new LocationController();
+  const relationshipController = new RelationshipController();
 
   app.use(express.json());
 
@@ -38,5 +41,20 @@ export function createApp(): {
   app.get("/universes/:universeId/locations", locationController.listLocationsByUniverse);
   app.get("/locations/:id/children", locationController.listChildLocations);
 
-  return { app, healthController, universeController, characterController, locationController };
+  // Relationship Endpoints (Sprint 4 Vertical Slice - Neo4j Graph Backed)
+  app.post("/universes/:universeId/relationships", relationshipController.createRelationship);
+  app.get("/relationships/:id", relationshipController.getRelationshipById);
+  app.get(
+    "/characters/:characterId/relationships",
+    relationshipController.listRelationshipsByCharacter,
+  );
+
+  return {
+    app,
+    healthController,
+    universeController,
+    characterController,
+    locationController,
+    relationshipController,
+  };
 }

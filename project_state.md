@@ -2,8 +2,9 @@
 
 ## Architecture Version
 
-**v1.3** — Phase 1 begins (Foundation complete + Data Architecture defined)
+**v1.4** — Phase 1 begins (Foundation complete + Data Architecture defined)
 
+> History: v1.4 (2026-08-04) — Sprint 4 (Relationship Domain Vertical Slice — Neo4j Graph Backed & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.3 (2026-08-04) — Sprint 3 (World Building Location Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.2 (2026-08-04) — Sprint 2 (Character Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.1 (2026-08-04) — Sprint 1 (Story Universe Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
@@ -17,7 +18,7 @@
 ---
 
 ## Current Phase
-Phase 13 — Software Implementation (Sprint 3 Complete)
+Phase 13 — Software Implementation (Sprint 4 Complete)
 
 ## Completed Tasks
 ### Phase 0 — Foundation (CLOSED ✅)
@@ -43,12 +44,13 @@ Phase 13 — Software Implementation (Sprint 3 Complete)
 - [x] **Sprint 1** — First Domain Vertical Slice (Story Universe Domain + CQRS + Real Postgres/Kafka Integration Test) — CLOSED ✅
 - [x] **Sprint 2** — Character Domain Vertical Slice (libs/domain/character, Postgres persistence with FK, Kafka events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
 - [x] **Sprint 3** — World Building Location Vertical Slice (libs/domain/world-building, Postgres self-referencing Adjacency List & Universe FK, Kafka location-events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
+- [x] **Sprint 4** — Relationship Domain Vertical Slice (libs/domain/relationship, Neo4j graph persistence with Cypher queries, relationshipType enum validation for Cypher injection prevention, cross-database character validation in Postgres, Kafka relationship-events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
 
 ## Active Task
-✅ SPRINT 3 COMPLETE (Location Vertical Slice + Unit Tests + Real Postgres & Kafka Integration Verification Passed)
+✅ SPRINT 4 COMPLETE (Relationship Neo4j Graph Vertical Slice + Unit Tests + Real Postgres, Neo4j & Kafka Integration Verification Passed)
 
 ## Next Task
-Sprint 4 Domain Bounded Context Implementation (Relationship Domain — Interpersonal & Spatial Edges, or Timeline Domain — Event Slice)
+Sprint 5 Domain Bounded Context Implementation (Timeline Domain — Event Slice & Chronological Sequence, or Faction Domain)
 
 ## Workflow
 ChatGPT → Architecture + Prompt → Antigravity AI → Implementation → CTO Review → Next Task

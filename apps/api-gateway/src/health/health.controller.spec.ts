@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { createApp } from "../app.js";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { HealthController } from "./health.controller.js";
 
 // Mock infrastructure health checks for unit testing
 vi.mock("@storyos/infrastructure-postgres", () => ({
@@ -32,6 +32,12 @@ vi.mock("@storyos/infrastructure-neo4j", () => ({
     checkHealth: vi.fn().mockResolvedValue({ status: "healthy", latencyMs: 8 }),
     close: vi.fn().mockResolvedValue(undefined),
   })),
+  Neo4jRelationshipRepository: vi.fn().mockImplementation(() => ({
+    save: vi.fn().mockResolvedValue(undefined),
+    findById: vi.fn().mockResolvedValue(null),
+    findByCharacterId: vi.fn().mockResolvedValue([]),
+    delete: vi.fn().mockResolvedValue(undefined),
+  })),
 }));
 
 vi.mock("@storyos/infrastructure-redis", () => ({
@@ -63,9 +69,7 @@ describe("API Gateway Health Checks (REL-001)", () => {
   let healthController: any;
 
   beforeEach(() => {
-    const created = createApp();
-    _app = created.app;
-    healthController = created.healthController;
+    healthController = new HealthController();
   });
 
   afterEach(async () => {
