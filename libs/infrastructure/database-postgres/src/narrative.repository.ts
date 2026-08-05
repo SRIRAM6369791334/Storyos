@@ -25,61 +25,6 @@ import {
 } from "@storyos/domain-narrative";
 import type { PostgresClient } from "../index.js";
 
-// ─── SQL Migration helpers ───────────────────────────────────────────────────
-
-const CREATE_WORKS_TABLE = `
-  CREATE TABLE IF NOT EXISTS works (
-    id             VARCHAR(255) PRIMARY KEY,
-    universe_id    VARCHAR(255) NOT NULL REFERENCES universes(id) ON DELETE CASCADE,
-    title          VARCHAR(400) NOT NULL,
-    work_type      VARCHAR(50)  NOT NULL DEFAULT 'OTHER',
-    draft_status   VARCHAR(50)  NOT NULL DEFAULT 'DRAFT',
-    canon_status   VARCHAR(50)  NOT NULL DEFAULT 'DRAFT',
-    created_by     VARCHAR(255) NOT NULL,
-    created_at     TIMESTAMPTZ  NOT NULL DEFAULT NOW()
-  );
-  CREATE INDEX IF NOT EXISTS idx_works_universe ON works(universe_id);
-`;
-
-const CREATE_CHAPTERS_TABLE = `
-  CREATE TABLE IF NOT EXISTS chapters (
-    id              VARCHAR(255) PRIMARY KEY,
-    work_id         VARCHAR(255) NOT NULL REFERENCES works(id) ON DELETE CASCADE,
-    title           VARCHAR(400) NOT NULL,
-    sequence_number INTEGER      NOT NULL DEFAULT 1,
-    draft_status    VARCHAR(50)  NOT NULL DEFAULT 'DRAFT',
-    created_by      VARCHAR(255) NOT NULL,
-    created_at      TIMESTAMPTZ  NOT NULL DEFAULT NOW()
-  );
-  CREATE INDEX IF NOT EXISTS idx_chapters_work ON chapters(work_id);
-`;
-
-const CREATE_SCENES_TABLE = `
-  CREATE TABLE IF NOT EXISTS scenes (
-    id              VARCHAR(255) PRIMARY KEY,
-    chapter_id      VARCHAR(255) NOT NULL REFERENCES chapters(id) ON DELETE CASCADE,
-    title           VARCHAR(400) NOT NULL,
-    sequence_number INTEGER      NOT NULL DEFAULT 1,
-    draft_status    VARCHAR(50)  NOT NULL DEFAULT 'DRAFT',
-    location_id     VARCHAR(255),
-    created_by      VARCHAR(255) NOT NULL,
-    created_at      TIMESTAMPTZ  NOT NULL DEFAULT NOW()
-  );
-  CREATE INDEX IF NOT EXISTS idx_scenes_chapter ON scenes(chapter_id);
-`;
-
-// Many-to-many: scenes ↔ characters (participants).
-// location_id on scenes is a soft reference (no FK — Location is in the same PG
-// instance but owned by a different domain; cross-domain FK enforced at app layer).
-const CREATE_SCENE_PARTICIPANTS_TABLE = `
-  CREATE TABLE IF NOT EXISTS scene_participants (
-    scene_id     VARCHAR(255) NOT NULL REFERENCES scenes(id) ON DELETE CASCADE,
-    character_id VARCHAR(255) NOT NULL,
-    PRIMARY KEY (scene_id, character_id)
-  );
-  CREATE INDEX IF NOT EXISTS idx_scene_participants_scene ON scene_participants(scene_id);
-`;
-
 // ─── PostgresWorkRepository ──────────────────────────────────────────────────
 
 export class PostgresWorkRepository implements WorkRepository {
@@ -89,13 +34,7 @@ export class PostgresWorkRepository implements WorkRepository {
     this.postgresClient = postgresClient;
   }
 
-  public async ensureTableExists(): Promise<void> {
-    const pool = this.postgresClient.getPool();
-    await pool.query(CREATE_WORKS_TABLE);
-  }
-
   public async save(work: Work): Promise<void> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const query = `
       INSERT INTO works (id, universe_id, title, work_type, draft_status, canon_status, created_by, created_at)
@@ -119,7 +58,6 @@ export class PostgresWorkRepository implements WorkRepository {
   }
 
   public async findById(workId: WorkId): Promise<Work | null> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query("SELECT * FROM works WHERE id = $1", [workId]);
     if (result.rows.length === 0) return null;
@@ -127,7 +65,6 @@ export class PostgresWorkRepository implements WorkRepository {
   }
 
   public async findByUniverseId(universeId: UniverseId): Promise<Work[]> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query(
       "SELECT * FROM works WHERE universe_id = $1 ORDER BY created_at ASC",
@@ -159,13 +96,7 @@ export class PostgresChapterRepository implements ChapterRepository {
     this.postgresClient = postgresClient;
   }
 
-  public async ensureTableExists(): Promise<void> {
-    const pool = this.postgresClient.getPool();
-    await pool.query(CREATE_CHAPTERS_TABLE);
-  }
-
   public async save(chapter: Chapter): Promise<void> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const query = `
       INSERT INTO chapters (id, work_id, title, sequence_number, draft_status, created_by, created_at)
@@ -187,7 +118,6 @@ export class PostgresChapterRepository implements ChapterRepository {
   }
 
   public async findById(chapterId: ChapterId): Promise<Chapter | null> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query("SELECT * FROM chapters WHERE id = $1", [chapterId]);
     if (result.rows.length === 0) return null;
@@ -195,7 +125,6 @@ export class PostgresChapterRepository implements ChapterRepository {
   }
 
   public async findByWorkId(workId: WorkId): Promise<Chapter[]> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query(
       "SELECT * FROM chapters WHERE work_id = $1 ORDER BY sequence_number ASC, created_at ASC",
@@ -226,14 +155,7 @@ export class PostgresSceneRepository implements SceneRepository {
     this.postgresClient = postgresClient;
   }
 
-  public async ensureTableExists(): Promise<void> {
-    const pool = this.postgresClient.getPool();
-    await pool.query(CREATE_SCENES_TABLE);
-    await pool.query(CREATE_SCENE_PARTICIPANTS_TABLE);
-  }
-
   public async save(scene: Scene): Promise<void> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
 
     // Upsert scene row
@@ -270,7 +192,6 @@ export class PostgresSceneRepository implements SceneRepository {
   }
 
   public async findById(sceneId: SceneId): Promise<Scene | null> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query("SELECT * FROM scenes WHERE id = $1", [sceneId]);
     if (result.rows.length === 0) return null;
@@ -282,7 +203,6 @@ export class PostgresSceneRepository implements SceneRepository {
   }
 
   public async findByChapterId(chapterId: ChapterId): Promise<Scene[]> {
-    await this.ensureTableExists();
     const pool = this.postgresClient.getPool();
     const result = await pool.query(
       "SELECT * FROM scenes WHERE chapter_id = $1 ORDER BY sequence_number ASC, created_at ASC",
