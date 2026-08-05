@@ -3,6 +3,7 @@ import { CharacterController } from "./character/character.controller.js";
 import { EventController } from "./event/event.controller.js";
 import { HealthController } from "./health/health.controller.js";
 import { LocationController } from "./location/location.controller.js";
+import { NarrativeController } from "./narrative/narrative.controller.js";
 import { RelationshipController } from "./relationship/relationship.controller.js";
 import { UniverseController } from "./universe/universe.controller.js";
 
@@ -14,6 +15,7 @@ export function createApp(): {
   locationController: LocationController;
   relationshipController: RelationshipController;
   eventController: EventController;
+  narrativeController: NarrativeController;
 } {
   const app = express();
   const healthController = new HealthController();
@@ -22,6 +24,7 @@ export function createApp(): {
   const locationController = new LocationController();
   const relationshipController = new RelationshipController();
   const eventController = new EventController();
+  const narrativeController = new NarrativeController();
 
   app.use(express.json());
 
@@ -58,6 +61,14 @@ export function createApp(): {
   app.get("/universes/:universeId/events", eventController.listEventsByUniverse);
   app.get("/characters/:characterId/events", eventController.listEventsByCharacter);
 
+  // Narrative Endpoints (Sprint 7 Vertical Slice)
+  app.post("/universes/:universeId/works", narrativeController.createWork);
+  app.get("/works/:id", narrativeController.getWorkById);
+  app.post("/works/:workId/chapters", narrativeController.createChapter);
+  app.get("/works/:workId/chapters", narrativeController.listChaptersByWork);
+  app.post("/chapters/:chapterId/scenes", narrativeController.createScene);
+  app.get("/chapters/:chapterId/scenes", narrativeController.listScenesByChapter);
+
   return {
     app,
     healthController,
@@ -66,5 +77,6 @@ export function createApp(): {
     locationController,
     relationshipController,
     eventController,
+    narrativeController,
   };
 }

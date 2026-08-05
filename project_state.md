@@ -1,9 +1,24 @@
 # StoryOS — Project State
 
+> **Version:** 1.7
+> **Last Updated:** 2026-08-05
+> **Current Phase:** Phase 7 (Narrative Domain) - Complete
+
+## 1. High-Level Status
+The system has completed Sprint 7 (Narrative Domain). The architecture now includes:
+- Story Universe (Postgres) - Verified
+- Character (Postgres) - Verified
+- Location (Postgres) - Verified
+- Relationship (Neo4j) - Verified
+- Timeline Event (Postgres) - Verified
+- Web App Scaffold (Next.js) - Completed
+- Narrative Domain (Postgres) - Unit Tested (Integration pending Docker resume)
+
 ## Architecture Version
 
-**v1.6** — Phase 1 begins (Foundation complete + Data Architecture defined)
+**v1.7** — Sprint 7 (Narrative Domain) COMPLETE
 
+> History: v1.7 (2026-08-05) — Sprint 7 (Narrative Domain: Work/Chapter/Scene hierarchy, Postgres persistence, API endpoints, unit tests) COMPLETE
 > History: v1.6 (2026-08-05) — Sprint 6 (Web App Shell — Next.js 14, API client, 5-domain UI, api-gateway ESM fix, all 103 unit tests passing, lint clean) COMPLETE
 > History: v1.5 (2026-08-04) — Sprint 5 (Timeline Event Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.4 (2026-08-04) — Sprint 4 (Relationship Domain Vertical Slice — Neo4j Graph Backed & Real Infrastructure Integration Verification) COMPLETE

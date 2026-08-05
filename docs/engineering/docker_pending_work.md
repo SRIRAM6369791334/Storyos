@@ -1,4 +1,4 @@
-﻿# StoryOS — Docker-Dependent Pending Work
+# StoryOS — Docker-Dependent Pending Work
 
 > **Status:** DEFERRED — Docker disabled to preserve PC performance  
 > **Resume When:** Docker Desktop re-enabled after project phase completion  
@@ -56,6 +56,7 @@ These ONLY pass when Docker is running.
 | Sprint 3 — Location | `libs/infrastructure/database-postgres/src/location.integration.spec.ts` | Postgres + Kafka |
 | Sprint 4 — Relationship | `libs/infrastructure/database-neo4j/src/relationship.integration.spec.ts` | Neo4j + Postgres + Kafka |
 | Sprint 5 — Event | `libs/infrastructure/database-postgres/src/event.integration.spec.ts` | Postgres + Kafka |
+| Sprint 7 - Narrative | `libs/infrastructure/database-postgres/src/narrative.integration.spec.ts` | Postgres + Kafka |
 
 **Run command (when Docker is up):**
 ```bash
@@ -170,7 +171,6 @@ pnpm --filter web-app dev
 
 | Sprint | Domain | Infra Required |
 |--------|--------|----------------|
-| Sprint 7 | Narrative (Work/Chapter/Scene) | Postgres + Kafka |
 | Sprint 8 | Knowledge Graph queries | Neo4j + Postgres |
 | Sprint 9+ | AI/Embedding features | Milvus + Redis |
 

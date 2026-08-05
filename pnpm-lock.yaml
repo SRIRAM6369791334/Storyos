@@ -84,6 +84,9 @@ importers:
       '@storyos/domain-character':
         specifier: workspace:*
         version: link:../../libs/domain/character
+      '@storyos/domain-narrative':
+        specifier: workspace:*
+        version: link:../../libs/domain/narrative
       '@storyos/domain-relationship':
         specifier: workspace:*
         version: link:../../libs/domain/relationship
@@ -186,6 +189,9 @@ importers:
       '@storyos/domain-character':
         specifier: workspace:*
         version: link:../domain/character
+      '@storyos/domain-narrative':
+        specifier: workspace:*
+        version: link:../domain/narrative
       '@storyos/domain-relationship':
         specifier: workspace:*
         version: link:../domain/relationship
@@ -200,6 +206,8 @@ importers:
         version: link:../domain/world-building
 
   libs/domain/character: {}
+
+  libs/domain/narrative: {}
 
   libs/domain/relationship: {}
 
@@ -239,6 +247,9 @@ importers:
       '@storyos/domain-character':
         specifier: workspace:*
         version: link:../../domain/character
+      '@storyos/domain-narrative':
+        specifier: workspace:*
+        version: link:../../domain/narrative
       '@storyos/domain-timeline':
         specifier: workspace:*
         version: link:../../domain/timeline
@@ -249,7 +260,7 @@ importers:
         specifier: workspace:*
         version: link:../../domain/world-building
       pg:
-        specifier: 8.12.0
+        specifier: ^8.11.3
         version: 8.12.0
     devDependencies:
       '@types/pg':

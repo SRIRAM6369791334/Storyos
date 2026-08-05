@@ -9,7 +9,8 @@
     "@storyos/domain-character": "workspace:*",
     "@storyos/domain-world-building": "workspace:*",
     "@storyos/domain-relationship": "workspace:*",
-    "@storyos/domain-timeline": "workspace:*"
+    "@storyos/domain-timeline": "workspace:*",
+    "@storyos/domain-narrative": "workspace:*"
   },
   "nx": {
     "tags": ["type:application"]

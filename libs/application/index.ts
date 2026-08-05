@@ -34,3 +34,16 @@ export * from "./command-handlers/create-event.handler.js";
 export * from "./query-handlers/get-event.handler.js";
 export * from "./query-handlers/list-events-by-universe.handler.js";
 export * from "./query-handlers/list-events-by-character.handler.js";
+
+export * from "./use-cases/create-work.command.js";
+export * from "./use-cases/get-work.query.js";
+export * from "./use-cases/create-chapter.command.js";
+export * from "./use-cases/list-chapters-by-work.query.js";
+export * from "./use-cases/create-scene.command.js";
+export * from "./use-cases/list-scenes-by-chapter.query.js";
+export * from "./command-handlers/create-work.handler.js";
+export * from "./query-handlers/get-work.handler.js";
+export * from "./command-handlers/create-chapter.handler.js";
+export * from "./query-handlers/list-chapters-by-work.handler.js";
+export * from "./command-handlers/create-scene.handler.js";
+export * from "./query-handlers/list-scenes-by-chapter.handler.js";
