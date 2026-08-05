@@ -3,6 +3,21 @@ import { createApp } from "./app.js";
 
 dotenv.config();
 
+// Handle unhandled rejections from infrastructure clients (e.g., Milvus gRPC
+// background connection retries) without crashing the process. The gateway
+// remains operational for all domains that don't require the unavailable infra.
+process.on("unhandledRejection", (reason: unknown) => {
+  const msg = reason instanceof Error ? reason.message : String(reason);
+  // gRPC connection failures from Milvus when infra is not running in dev mode
+  if (msg.includes("No connection established") || msg.includes("UNAVAILABLE")) {
+    console.warn("[StoryOS API Gateway] Infrastructure connection warning (non-fatal):", msg);
+    return;
+  }
+  // Re-throw anything else as a fatal error
+  console.error("[StoryOS API Gateway] Unhandled rejection:", reason);
+  process.exit(1);
+});
+
 const PORT = Number(process.env.PORT || 3000);
 const { app, healthController } = createApp();
 

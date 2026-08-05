@@ -10,6 +10,7 @@
     "start": "node dist/main.js"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "@storyos/application": "workspace:*",
     "@storyos/domain-universe": "workspace:*",
     "@storyos/domain-character": "workspace:*",

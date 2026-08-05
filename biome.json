@@ -26,6 +26,6 @@
     "lineWidth": 100
   },
   "files": {
-    "ignore": ["node_modules", "dist", "tmp", ".nx", "coverage"]
+    "ignore": ["node_modules", "dist", "tmp", ".nx", "coverage", ".next"]
   }
 }

@@ -10,5 +10,6 @@
   },
   "nx": {
     "tags": ["type:infrastructure"]
-  }
+  },
+  "type": "module"
 }

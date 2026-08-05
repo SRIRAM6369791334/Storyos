@@ -2,8 +2,9 @@
 
 ## Architecture Version
 
-**v1.5** — Phase 1 begins (Foundation complete + Data Architecture defined)
+**v1.6** — Phase 1 begins (Foundation complete + Data Architecture defined)
 
+> History: v1.6 (2026-08-05) — Sprint 6 (Web App Shell — Next.js 14, API client, 5-domain UI, api-gateway ESM fix, all 103 unit tests passing, lint clean) COMPLETE
 > History: v1.5 (2026-08-04) — Sprint 5 (Timeline Event Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.4 (2026-08-04) — Sprint 4 (Relationship Domain Vertical Slice — Neo4j Graph Backed & Real Infrastructure Integration Verification) COMPLETE
 > History: v1.3 (2026-08-04) — Sprint 3 (World Building Location Domain Vertical Slice & Real Infrastructure Integration Verification) COMPLETE
@@ -19,7 +20,7 @@
 ---
 
 ## Current Phase
-Phase 13 — Software Implementation (Sprint 5 Complete)
+Phase 13 — Software Implementation (Sprint 6 Complete)
 
 ## Completed Tasks
 ### Phase 0 — Foundation (CLOSED ✅)
@@ -47,12 +48,13 @@ Phase 13 — Software Implementation (Sprint 5 Complete)
 - [x] **Sprint 3** — World Building Location Vertical Slice (libs/domain/world-building, Postgres self-referencing Adjacency List & Universe FK, Kafka location-events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
 - [x] **Sprint 4** — Relationship Domain Vertical Slice (libs/domain/relationship, Neo4j graph persistence with Cypher queries, relationshipType enum validation for Cypher injection prevention, cross-database character validation in Postgres, Kafka relationship-events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
 - [x] **Sprint 5** — Timeline Event Vertical Slice (libs/domain/timeline, Postgres events & event_participants persistence with FKs to universe, character & location, Kafka timeline-events, API Gateway endpoints, unit & real infra integration tests) — CLOSED ✅
+- [x] **Sprint 6** — Web App Shell (apps/web-app Next.js 14 App Router, typed API client with RFC 7807 error handling, pages for Universe/Character/Location/Relationship/Event, api-gateway ESM module fix with `"type": "module"` across all libs, Milvus gRPC crash handler, 103/103 unit tests passing, lint clean) — CLOSED ✅
 
 ## Active Task
-✅ SPRINT 5 COMPLETE (Timeline Event Vertical Slice + Unit Tests + Real Postgres & Kafka Integration Verification Passed)
+✅ SPRINT 6 COMPLETE (Web App Shell + api-gateway Boot Fix + 103 Unit Tests Passing + Lint Clean)
 
 ## Next Task
-Sprint 6 Domain Bounded Context Implementation (Narrative Domain — Work, Chapter & Scene Content Hierarchy Slice)
+Sprint 7 — Awaiting user direction (suggested: Narrative Domain — Work/Chapter/Scene hierarchy, or Knowledge Graph read queries)
 
 ## Workflow
 ChatGPT → Architecture + Prompt → Antigravity AI → Implementation → CTO Review → Next Task
@@ -211,4 +213,4 @@ Phase 12 — Engineering Foundation & Implementation Readiness ✅ CLOSED
 - **Total: 34 Primary Domains, ~200+ domain objects**
 
 ## Last Updated
-2026-08-04
+2026-08-05

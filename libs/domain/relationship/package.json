@@ -6,5 +6,6 @@
   "private": true,
   "nx": {
     "tags": ["type:domain"]
-  }
+  },
+  "type": "module"
 }

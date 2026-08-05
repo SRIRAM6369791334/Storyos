@@ -13,5 +13,6 @@
   },
   "nx": {
     "tags": ["type:application"]
-  }
+  },
+  "type": "module"
 }
